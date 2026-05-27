@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/Digitalsy logo.jpeg">
+    <title>subjectPilot</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>subjectPilot</h1>
+            <p id="motto">...Customized chatbot for upper basic learners "Js1 - Js3": Aligned with Nigerian Curriculum</p>
+        </div>
+        <ul>
+            <li><a href="#">home</a></li>
+            <li><a href="#">about</a></li>
+            <li><a href="#">contact</a></li>
+        </ul>
+    </header>
+
+ 
+    
+    <div id="obeks-chatbot-widget">
+        <div class="ocw-box" id="ocwBox">
+            <div class="ocw-head">
+                <h4>subjectPilot (all BECE subjects covered)</h4>
+            </div>
+            <div class="ocw-msgs" id="ocwMsgs"></div>
+            <div class="ocw-input-row">
+                <input class="ocw-input" id="ocwInput" type="text"
+                       placeholder="I am your AI companion, How may I assist you today?" 
+                       onkeypress="if(event.key==='Enter')ocwSend()">
+                <button class="ocw-send" onclick="ocwSend()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>2026 &copy; codiobot team</p>
+    </footer>
+
+    <script src="/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+/* ==========================================================================
+   1. Global Reset & Base Fluid Setup
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   2. Main Page Elements (Header, Hero, Footer)
+   ========================================================================== */
+header {
+  display: flex;
+  flex-direction: column; /* Stack menu items vertically on tiny mobile screens */
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: darkgreen;
+  color: white;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  list-style-type: none;
+  gap: 15px;
+  padding: 0;
+}
+
+li a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+#hero {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  margin-bottom: 20px;
+  font-style: italic;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#hero h2 {
+  font-size: clamp(1.2rem, 2vw + 0.8rem, 2rem);
+  line-height: 1.4;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: auto; /* Pushes footer to the absolute bottom of the page */
+  font-size: 0.9rem;
+  color: black;
+}
+
+/* ==========================================================================
+   3. Chatbot Centering Engine & Overlay
+   ========================================================================== */
+#obeks-chatbot-widget {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; 
+  z-index: 9999; /* Forces the box to sit visually on top of everything else */
+  
+  /* Flexbox logic ensures the child (.ocw-box) is mathematically centered */
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  
+  /* Fluid font scaling scales up beautifully for classroom smart boards */
+  font-size: clamp(0.85rem, 0.4vw + 0.7rem, 1.25rem);
+  
+  /* Makes the blank screen space transparent to clicks */
+  pointer-events: none; 
+}
+
+.ocw-box {
+  /* Restores button and text input clicks inside the chat container */
+  pointer-events: auto; 
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+
+  /* --- Mobile & Tablet Layout (Default) --- */
+  width: 90vw;          
+  max-width: 440px;     
+  height: 50vh;         /* Reduced from 65vh/60vh for a shorter look on mobile */
+  max-height: 380px;    /* Reduced from 500px to keep it short and sleek */
+}
+
+/* ==========================================================================
+   4. Chat Interior Elements
+   ========================================================================== */
+.ocw-head {
+  background-color: darkgreen;
+  color: #fff; 
+  padding: 14px 16px;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.ocw-head h4 { 
+  margin: 0; 
+  font-size: 1.05rem; 
+  font-weight: 700; 
+}
+
+.ocw-msgs {
+  flex: 1; 
+  padding: 14px; 
+  overflow-y: auto; 
+  background: #f0f4ff;
+  display: flex; 
+  flex-direction: column; 
+  gap: 9px;
+}
+
+.ocw-msg {
+  max-width: 82%; 
+  padding: 9px 12px; 
+  border-radius: 12px;
+  font-size: 0.88rem; 
+  line-height: 1.5; 
+  word-wrap: break-word;
+}
+
+.ocw-bot { background: #fff; border: 1px solid #e2e8f0; align-self: flex-start; }
+.ocw-user { background: linear-gradient(135deg,#1f52dc,#38bdf8); color: #fff; align-self: flex-end; }
+
+.ocw-input-row {
+  padding: 12px; 
+  border-top: 1px solid #e2e8f0;
+  display: flex; 
+  gap: 8px; 
+  background: #fff;
+}
+
+.ocw-input {
+  flex: 1; 
+  padding: 10px 12px; 
+  border: 1.5px solid #e2e8f0;
+  border-radius: 9px; 
+  font-family: inherit; 
+  font-size: 0.85rem; 
+  outline: none;
+}
+
+.ocw-input:focus { border-color: #1f52dc; }
+
+.ocw-send {
+  background: linear-gradient(135deg,#1f52dc,#38bdf8);
+  color: #fff; 
+  border: none; 
+  padding: 10px 16px; 
+  border-radius: 9px;
+  cursor: pointer; 
+  font-weight: 600; 
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   5. Media Queries for Laptops, Desktops, & Classroom Smart Boards
+   ========================================================================== */
+
+/* --- Laptops & Desktop Displays (1024px and wider) --- */
+@media (min-width: 1024px) {
+  header {
+    flex-direction: row; /* Nav links move beautifully side-by-side */
+    padding: 12px 50px;
+  }
+
+  ul {
+    gap: 30px;
+  }
+
+  .ocw-box {
+    /* Upgrades the chatbox dimensions perfectly for wide computer viewports */
+    width: 680px; 
+    height: 480px; 
+  }
+}
+
+/* --- Interactive Smart Boards & Massive Screens (1920px and wider) --- */
+@media (min-width: 1920px) {
+  .ocw-box {
+    /* Large display scaling so kids in the back of the class can read it */
+    width: 900px;
+    height: 600px;
+    border-radius: 24px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Expand touch hit zones for larger presentation fingers */
+  .ocw-head { padding: 24px; }
+  .ocw-msgs { padding: 24px; gap: 14px; }
+  .ocw-input-row { padding: 18px; gap: 12px; }
+  .ocw-input { padding: 14px 18px; font-size: 1rem; }
+  .ocw-send { padding: 14px 24px; font-size: 1rem; }
+  
+  header { padding: 24px 80px; }
+  ul { gap: 50px; }
+}
+
+#motto {
+    font-style: italic;
+}
+
+h1{
+    margin-bottom: 5px;
+}
