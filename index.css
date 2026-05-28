@@ -153,7 +153,7 @@ footer {
 }
 
 .ocw-bot { background: #fff; border: 1px solid #e2e8f0; align-self: flex-start; }
-.ocw-user { background: linear-gradient(135deg,#1f52dc,#38bdf8); color: #fff; align-self: flex-end; }
+.ocw-user { background-color: darkgreen; color: #fff; align-self: flex-end; }
 
 .ocw-input-row {
   padding: 12px; 
@@ -173,10 +173,10 @@ footer {
   outline: none;
 }
 
-.ocw-input:focus { border-color: #1f52dc; }
+.ocw-input:focus { border-color: darkgreen; }
 
 .ocw-send {
-  background: linear-gradient(135deg,#1f52dc,#38bdf8);
+  background-color: darkgreen;
   color: #fff; 
   border: none; 
   padding: 10px 16px; 

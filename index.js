@@ -135,7 +135,7 @@
       setTimeout(function() {
         ocwToggle();
         localStorage.setItem('ocw_opened', '1');
-      }, 12000);
+      }, 5000);
     }
   });
 })();
