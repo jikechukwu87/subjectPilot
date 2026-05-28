@@ -26,7 +26,7 @@
     if (showAppt) {
       const btn = document.createElement('button');
       btn.className = 'ocw-appt-btn';
-      btn.textContent = '📅 Book an Appointment';
+      // btn.textContent = '📅 Book an Appointment';
       btn.onclick = ocwShowApptForm;
       d.appendChild(btn);
     }
